@@ -1,19 +1,18 @@
 :root {
     --primary: #e99401;
     --negro: #262626;
-    --blanco: #ffffff;
-    --fuente-principal: "Outfit", sans-serif;
+    --blanco: #FFF;
+    --fuente-principal: 'Outfit', sans-serif;
 }
 
 html {
     font-size: 62.5%;
-    /** 1rem = 10px **/
     box-sizing: border-box;
 }
 
 *,
-*::before,
-*::after {
+*:before,
+*:after {
     box-sizing: inherit;
 }
 
@@ -26,7 +25,6 @@ body {
 img {
     max-width: 100%;
 }
-
 
 [class*="contenedor"] {
     max-width: 120rem;
@@ -41,8 +39,6 @@ img {
     color: var(--primary);
     margin: 5rem 0;
 }
-
-/** Header **/
 
 .header {
     background-image: linear-gradient(to right, rgb(0 0 0 / .7), rgb(0 0 0 / .7)), url(../img/header.jpg);
@@ -62,6 +58,12 @@ img {
         position: absolute;
         right: 0;
         bottom: 0;
+
+        /* animation-name: mostrarImagen;
+        animation-duration: 1s;
+        animation-delay: 0s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: 1; */
 
         animation: 1s ease-in-out 0s 1 mostrarImagen;
     }
@@ -89,14 +91,12 @@ img {
     align-items: center;
 }
 
-
 @media (min-width: 768px) {
     .header__barra {
         flex-direction: row;
         justify-content: space-between;
     }
 }
-
 
 .header__logo {
     width: 30rem;
@@ -108,11 +108,11 @@ img {
     margin-top: 5rem;
     position: relative;
     z-index: 1;
+}
 
-    @media(min-width: 768px) {
-        .navegacion {
-            margin-top: 0;
-        }
+@media (min-width: 768px) {
+    .navegacion {
+        margin-top: 0;
     }
 }
 
@@ -120,7 +120,7 @@ img {
     color: var(--blanco);
     text-decoration: none;
     text-transform: uppercase;
-    padding: 1rem;
+    padding: .5rem;
     font-size: 1.4rem;
     font-weight: 700;
     transition-property: background-color;
@@ -130,8 +130,6 @@ img {
 .navegacion__enlace:hover {
     background-color: var(--primary);
 }
-
-/** Modelo (informacion header) **/
 
 .modelo {
     color: var(--blanco);
@@ -147,7 +145,7 @@ img {
 }
 
 .modelo__nombre {
-    font-size: 6.5rem;
+    font-size: 8rem;
 }
 
 .modelo__precio {
@@ -157,8 +155,6 @@ img {
     line-height: 0;
 }
 
-
-/* Boton del enlace */
 .modelo__enlace {
     margin-top: 2rem;
     text-decoration: none;
@@ -176,8 +172,6 @@ img {
     background-color: var(--primary);
 }
 
-/** Productos **/
-
 .productos__grid {
     display: grid;
     gap: 4rem;
@@ -189,14 +183,12 @@ img {
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
     .productos__grid {
         grid-template-columns: repeat(3, 1fr);
     }
-
 }
 
-/** Producto **/
 .producto {
     display: grid;
     grid-template-columns: 2fr 3fr;
@@ -240,16 +232,54 @@ img {
     color: var(--blanco);
 }
 
-/** Cursos **/
+.producto__formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.producto__label {
+    font-size: 2.2rem;
+    margin-right: 1rem;
+}
+
+.producto__cantidad {
+    border: 2px solid var(--primary);
+    padding: 1rem;
+    text-align: center;
+}
+
+.producto__cantidad:focus-visible {
+    outline: 2px solid var(--primary);
+    border: none;
+}
+
+.producto__agregar-carrito {
+    margin-top: 3rem;
+    display: block;
+    background-color: var(--primary);
+    text-decoration: none;
+    text-transform: uppercase;
+    border: none;
+    text-align: center;
+    padding: 2rem 5rem;
+    color: var(--blanco);
+    font-size: 1.8rem;
+    font-weight: 700;
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+
+.producto__agregar-carrito:hover {
+    background-color: var(--negro);
+    cursor: pointer;
+}
 
 .cursos {
-    background-image: linear-gradient(to right, rgb(0 0 0 / .65), rgb(0 0 0 / .65)),
-        url('../img/cursos_bg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50%;
+    background-image: linear-gradient(to right, rgb(0 0 0 / .65), rgb(0 0 0 / .65)), url('../img/cursos_bg.jpg');
     padding: 10rem 0;
     margin-top: 10rem;
+    background-size: cover;
+    background-position: 50%;
 }
 
 @media (min-width: 768px) {
@@ -282,22 +312,20 @@ img {
     color: var(--blanco);
     margin-top: 2rem;
     display: inline-block;
-    text-decoration: none;
-    text-transform: uppercase;
     border: 2px solid var(--primary);
+    text-decoration: none;
     padding: 1rem 5rem;
+    text-transform: uppercase;
     font-size: 1.4rem;
     font-weight: 700;
     transition-property: background-color;
-    transition-duration: 3.s;
+    transition-duration: .3s;
 }
 
 .cursos__enlace:hover {
     background-color: var(--primary);
     color: var(--blanco);
 }
-
-/** Blog **/
 
 .blog__grid {
     display: grid;
@@ -310,16 +338,23 @@ img {
     }
 }
 
-
 @media (min-width: 992px) {
     .blog__grid {
         grid-template-columns: repeat(4, 1fr);
     }
+
+    .blog__grid--pagina {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.entrada {
+    max-width: 80rem;
+    margin: 0 auto;
 }
 
 .entrada__contenido {
     padding: 2rem;
-
 }
 
 .entrada__titulo {
@@ -331,7 +366,7 @@ img {
 
 .entrada__fecha {
     font-size: 1.6rem;
-    color: var(--primary)
+    color: var(--primary);
 }
 
 .entrada__enlace {
@@ -354,8 +389,6 @@ img {
     color: var(--blanco);
 }
 
-
-/** Como mostrar solo las lineas que quieras **/
 .entrada__texto {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -364,8 +397,6 @@ img {
     font-size: 1.6rem;
 }
 
-
-/** Footer **/
 .footer {
     margin-top: 5rem;
     background-color: var(--negro);
@@ -385,7 +416,7 @@ img {
     align-items: center;
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
     .footer__nav {
         flex-direction: row;
         gap: 2rem;
@@ -397,7 +428,6 @@ img {
     color: var(--blanco);
     text-decoration: none;
     font-weight: 700;
-
 }
 
 .footer__enlace:hover {
@@ -410,3 +440,16 @@ img {
     font-weight: 700;
     text-align: center;
 }
+
+.nosotros__grid {
+    display: grid;
+    gap: 4rem;
+}
+
+@media (min-width: 768px) {
+    .nosotros__grid {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
+}
+
